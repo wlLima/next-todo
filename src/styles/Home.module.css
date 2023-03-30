@@ -30,8 +30,15 @@
 }
 
 .boxTask{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #F6F6F6;
   padding: 0.5rem;
   border-radius: 0.9rem;
   width: inherit;
+}
+
+.formSubmit{
+  margin-bottom: 3rem;
 }
