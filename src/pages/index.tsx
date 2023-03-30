@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Box, Paper, TextField, FormControl, Button, Checkbox, IconButton} from '@mui/material';
 import {TaskService} from '@/services/Tasks/TaskService';
 import { useEffect, useState } from 'react';
-import { ITodo } from '../interface/TodoInterface'
+import { ITodo } from '../interfaces/TodoInterfaces'
 
 
 export default function Home() {
