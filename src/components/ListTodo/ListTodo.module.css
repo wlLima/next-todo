@@ -1,0 +1,21 @@
+.boxTask{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #F6F6F6;
+  padding: 0.5rem;
+  border-radius: 0.9rem;
+  width: -webkit-fill-available;
+}
+
+@media (max-width: 600px) {
+  .boxTask{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F6F6F6;
+    padding: 0.5rem;
+    border-radius: 0.9rem;
+    width: -webkit-fill-available;
+  }
+}

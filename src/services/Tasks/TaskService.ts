@@ -1,5 +1,5 @@
 import { api } from '../api'
-import { ITodo } from '../../interface/TodoInterface'
+import { ITodo } from '../../interfaces/TodoInterfaces'
 
 export const TaskService = {
 
