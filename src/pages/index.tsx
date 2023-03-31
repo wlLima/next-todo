@@ -56,7 +56,7 @@ export default function Home() {
                
                 {
                   todo.length > 0 ? todo.map((todos: ITodo)=>{
-                    return(<ListTodo todos={todos} handleChangeCheck={handleChangeCheck} handleDelete={handleDelete} />) 
+                    return(<ListTodo key={todos.id} todos={todos} handleChangeCheck={handleChangeCheck} handleDelete={handleDelete} />) 
                   }) : <h4 className={styles.alertText}>Nenhuma tarefa encontrada, adicione uma agora mesmo!</h4>
                 }
                
