@@ -18,7 +18,6 @@ export default function Home() {
     TaskService.list().then((response)=>{
       setTodo(response.data)
     })
-
   },[todo])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -48,7 +47,7 @@ export default function Home() {
   return (
     <>
       <div className={styles.container}>
-         <Box>
+        
             <Paper elevation={8} className={styles.containerSearch}>
               
               <Box className={styles.boxContainer}>
@@ -58,12 +57,12 @@ export default function Home() {
                 {
                   todo.length > 0 ? todo.map((todos: ITodo)=>{
                     return(<ListTodo todos={todos} handleChangeCheck={handleChangeCheck} handleDelete={handleDelete} />) 
-                  }) : <h4>Nenhuma tarefa encontrada, adicione uma agora mesmo!</h4>
+                  }) : <h4 className={styles.alertText}>Nenhuma tarefa encontrada, adicione uma agora mesmo!</h4>
                 }
                
               </Box>
             </Paper>
-         </Box>
+
       </div>
     </>
   )
