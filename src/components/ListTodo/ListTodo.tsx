@@ -7,8 +7,8 @@ export const ListTodo = (props: any) => {
   const {id, finished, title } = props.todos
 
   return (
-    <Box key={id} className={styles.boxTask}>
-      <Box>
+    <Box className={styles.boxTask}>
+      <Box className={styles.textLength}>
         <Checkbox onChange={(event)=> props.handleChangeCheck(event, props.todos)}/>
         {finished ? <span><s>{title}</s></span> : <span>{title}</span>}
       </Box>
