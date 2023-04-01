@@ -4,6 +4,8 @@ import { Box, Paper } from '@mui/material';
 import { TaskService } from '@/services/Tasks/TaskService';
 import { useEffect, useState } from 'react';
 import { ITodo } from '../interfaces/TodoInterfaces'
+import Toast from '../utils/toast'
+import { ToastContainer } from 'react-toastify';
 
 import { FormTodo } from '../components/FormTodo/FormTodo'
 import { ListTodo } from '../components/ListTodo/ListTodo'
@@ -15,9 +17,13 @@ export default function Home() {
   const [title, setTitle] = useState('')
 
   useEffect(()=>{
+
     TaskService.list().then((response)=>{
       setTodo(response.data)
+    }).catch((error)=>{
+      Toast.error(error.message)
     })
+
   },[todo])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,11 +34,12 @@ export default function Home() {
       finished: false
     }
 
-    const result = await TaskService.create(data).then((response)=>{
-      return response.data
+    await TaskService.create(data).then((response)=>{
+      setTodo([...todo, response.data])
+    }).catch((error)=>{
+      Toast.error(error.message)
     })
 
-    setTodo([...todo, result])
   }
 
   const handleChangeCheck = async (event: React.ChangeEvent<HTMLInputElement>, data: ITodo) => {
@@ -55,6 +62,7 @@ export default function Home() {
                 <FormTodo handleSubmit={handleSubmit} setTitle={setTitle} />
                
                 {
+                  
                   todo.length > 0 ? todo.map((todos: ITodo)=>{
                     return(<ListTodo key={todos.id} todos={todos} handleChangeCheck={handleChangeCheck} handleDelete={handleDelete} />) 
                   }) : <h4 className={styles.alertText}>Nenhuma tarefa encontrada, adicione uma agora mesmo!</h4>
@@ -64,6 +72,7 @@ export default function Home() {
             </Paper>
 
       </div>
+      <ToastContainer />
     </>
   )
 }
